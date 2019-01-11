@@ -10,10 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		GameModel model = new GameModel();
-		JFrame view = new AppFrame();
+		AppFrame view = new AppFrame();
 		MainController controller = new MainController(view, model);
-		
-		controller.start();
 	}
 
 }

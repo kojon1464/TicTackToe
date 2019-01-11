@@ -5,11 +5,16 @@ import javax.swing.JPanel;
 
 public class AppFrame extends JFrame {
 	
-	private static final int WIDTH = 400;
-	private static final int HEIGHT = 300;
+	private static final int WIDTH = 600;
+	private static final int HEIGHT = 500;
+	
+	public AppFrame() {
+		init();
+	}
 	
 	public void setPanel(JPanel panel) {
 		
+		this.getContentPane().removeAll();
 		this.getContentPane().add(panel);
 		this.revalidate();
 		this.repaint();

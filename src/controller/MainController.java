@@ -3,19 +3,19 @@ package controller;
 import javax.swing.JFrame;
 
 import model.GameModel;
+import view.AppFrame;
+import view.GamePanel;
 
 public class MainController {
 
-	private JFrame appFrame;
+	private AppFrame appFrame;
 	private GameModel gameModel;
 	
-	public MainController(JFrame appFrame, GameModel gameModel) {
+	public MainController(AppFrame appFrame, GameModel gameModel) {
 		
 		this.appFrame = appFrame;
 		this.gameModel = gameModel;
-	}
-	
-	public void start() {
 		
+		appFrame.setPanel(new GamePanel());
 	}
 }
