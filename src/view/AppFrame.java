@@ -43,7 +43,7 @@ public class AppFrame extends JFrame {
 		this.revalidate();
 		this.repaint();
 	}
-	
+
 	public void removePanelOnPopuoLayer(JPanel panel) {
 
 		this.getLayeredPane().remove(panel);
@@ -61,11 +61,21 @@ public class AppFrame extends JFrame {
 	}
 
 	@Override
+	public void setResizable(boolean resizable) {
+
+		super.setResizable(resizable);
+
+		if (!resizable)
+			this.setSize(WIDTH_START, HEIGHT_START);
+	}
+
+	@Override
 	public void paint(Graphics g) {
 
 		super.paint(g);
 
 		if (this.getLayeredPane().getComponent(0) instanceof PopupPanel)
-			((PopupPanel) this.getLayeredPane().getComponent(0)).notifyFrameChangedSize(this.getWidth(), this.getHeight());
+			((PopupPanel) this.getLayeredPane().getComponent(0)).notifyFrameChangedSize(this.getWidth(),
+					this.getHeight());
 	}
 }

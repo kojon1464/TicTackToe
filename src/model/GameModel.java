@@ -12,6 +12,7 @@ public class GameModel implements GameStatusProvider {
 	private Player player;
 	private State[][] state;
 	private boolean isWon;
+	private boolean isTie;
 	private int consecutiveNumber;
 
 	private List<GameStatusObserver> observers;
@@ -20,22 +21,42 @@ public class GameModel implements GameStatusProvider {
 
 		observers = new ArrayList<>();
 	}
-
+	
+	public GameModel(State[][] state, Player player, int consecutiveNumber) {
+		
+		observers = new ArrayList<>();
+		
+		this.state = state;
+		this.player = player;
+		this.consecutiveNumber = consecutiveNumber;
+		isWon = false;
+		isTie = false;
+		
+		if(isWinning())
+			isWon = true;
+		if(isTied())
+			isTie = true;
+	}
+	
 	public void initialize(int width, int height, int consecutiveNumber) {
 
 		player = Player.CIRCLE;
 		state = new State[height][width];
+		isWon = false;
+		isTie = false;
 
 		for (int i = 0; i < height; i++)
 			for (int j = 0; j < width; j++)
 				state[i][j] = State.EMPTY;
 
 		this.consecutiveNumber = consecutiveNumber;
+		
+		notifyObservers();
 	}
 
 	public void changeState(int width, int height) {
 
-		if (isWon)
+		if (isWon || isTie)
 			throw new IllegalStateException("Can not change field when game is Won");
 
 		if (state[height][width] == State.EMPTY) {
@@ -43,13 +64,27 @@ public class GameModel implements GameStatusProvider {
 			state[height][width] = player.getState();
 			if (isWinning())
 				isWon = true;
+			else if (isTied())
+				isTie = true;
 			else
 				changePlayer();
 			notifyObservers();
 		}
 	}
+	
+	private boolean isTied() {
+		
+		boolean tie = true;
+		
+		for (int i = 0; i < state.length; i++)
+			for (int j = 0; j < state[0].length; j++)
+				if(state[i][j] == State.EMPTY)
+					tie = false;
+		
+		return tie;
+	}
 
-	private boolean isWinning() {
+	 boolean isWinning() {
 
 		boolean winning = false;
 
@@ -130,6 +165,11 @@ public class GameModel implements GameStatusProvider {
 		return isWon;
 	}
 	
+	public boolean isTie() {
+		
+		return isTie;
+	}
+	
 	public Player getPlayer() {
 		
 		return player;
@@ -152,6 +192,6 @@ public class GameModel implements GameStatusProvider {
 	public void notifyObservers() {
 
 		for (GameStatusObserver observer : observers)
-			observer.updateGameStatus(state, player, isWon);
+			observer.updateGameStatus(state, player, isWon, isTie);
 	}
 }
