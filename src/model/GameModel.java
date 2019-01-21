@@ -99,37 +99,24 @@ public class GameModel implements GameStatusProvider {
 
 	private boolean isFieldWinning(int row, int column) {
 
-		boolean winning = false;
-		int counterX = 1;
-		int counterY = 1;
-		int counterCROSS1 = 1;
-		int counterCROSS2 = 1;
+		// direction in which algorithms check if field is winning. pattern :{x, y};
+		int[][] directions = { { 1, 0 }, { 0, 1 }, { 1, 1 }, { -1, 1 }};
 
-		for (int i = 1; i < consecutiveNumber; i++) {
+		for(int i = 0; i < directions.length; i++) {
+			
+			int counter = 1;
+			
+			for (int j = 1; j < consecutiveNumber; j++) {
 
-			//
-			if (validFieldColumn(column + i))
-				if (state[row][column + i] == player.getState())
-					counterX++;
-
-			if (validFieldRow(row + i))
-				if (state[row + i][column] == player.getState())
-					counterY++;
-
-			if (validFieldRow(row + i) && validFieldColumn(column + i))
-				if (state[row + i][column + i] == player.getState())
-					counterCROSS1++;
-
-			if (validFieldRow(row + i) && validFieldColumn(column - i))
-				if (state[row + i][column - i] == player.getState())
-					counterCROSS2++;
+				if (validFieldRow(row + j * directions[i][1]) && validFieldColumn(column + j * directions[i][0]))
+					if (state[row + j * directions[i][1]][column + j * directions[i][0]] == player.getState())
+						counter++;
+			}
+			
+			if(counter >=consecutiveNumber)
+				return true;
 		}
-
-		if (counterX >= consecutiveNumber || counterY >= consecutiveNumber || counterCROSS1 >= consecutiveNumber
-				|| counterCROSS2 >= consecutiveNumber)
-			winning = true;
-
-		return winning;
+		return false;
 	}
 
 	private boolean validFieldRow(int row) {

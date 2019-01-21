@@ -26,87 +26,53 @@ public class BlockingAI implements PlayerAI {
 			this.player = Player.CROSS;
 		else
 			this.player = Player.CIRCLE;
-		
+
 		return findBestPointBlockingOpponent();
 	}
-	
+
 	private Point findBestPointBlockingOpponent() {
-		
+
 		Point[] points = new Point[consecutiveNumber - 1];
-		
-		for(int i = 0; i < state.length; i++) {
-			for(int j = 0; j < state[0].length; j++) {
-				if(state[i][j] == State.EMPTY) {
-					for(int k = consecutiveNumber - 1; k > 0; k--) {
-						if(isFieldBlocking(i, j, k))
+
+		for (int i = 0; i < state.length; i++) {
+			for (int j = 0; j < state[0].length; j++) {
+				if (state[i][j] == State.EMPTY) {
+					for (int k = consecutiveNumber - 1; k > 0; k--) {
+						if (isFieldBlocking(i, j, k))
 							points[k - 1] = new Point(j, i);
 					}
 				}
-				
+
 			}
 		}
-		
-		for(int i = points.length - 1; i >= 0; i--)
-			if(points[i] != null)
+
+		for (int i = points.length - 1; i >= 0; i--)
+			if (points[i] != null)
 				return points[i];
-		
+
 		return new Point(0, 0);
 	}
-	
+
 	private boolean isFieldBlocking(int row, int column, int number) {
 
-		boolean blocking = false;
-		int counterX1 = 0;
-		int counterY1 = 0;
-		int counterCROSS11 = 0;
-		int counterCROSS21 = 0;
-		int counterX2 = 0;
-		int counterY2 = 0;
-		int counterCROSS12 = 0;
-		int counterCROSS22 = 0;
+		// direction in which algorithms check if field is blocking opponent. pattern :{x, y};
+		int[][] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 }, { 1, 1 }, { -1, -1 }, { -1, 1 }, { 1, -1 } };
 
-		for (int i = 1; i <= number; i++) {
-
-			//
-			if (validFieldColumn(column + i))
-				if (state[row][column + i] == player.getState())
-					counterX1++;
+		for (int i = 0; i < directions.length; i++) {
 			
-			if (validFieldColumn(column - i))
-				if (state[row][column - i] == player.getState())
-					counterX2++;
+			int counter = 0;
 
-			if (validFieldRow(row + i))
-				if (state[row + i][column] == player.getState())
-					counterY1++;
-			
-			if (validFieldRow(row - i))
-				if (state[row - i][column] == player.getState())
-					counterY2++;
+			for (int j = 1; j <= number; j++) {
 
-			if (validFieldRow(row + i) && validFieldColumn(column + i))
-				if (state[row + i][column + i] == player.getState())
-					counterCROSS11++;
+				if (validFieldRow(row + j * directions[i][1]) && validFieldColumn(column + j * directions[i][0]))
+					if (state[row + j * directions[i][1]][column + j * directions[i][0]] == player.getState())
+						counter++;
+			}
 			
-			if (validFieldRow(row - i) && validFieldColumn(column - i))
-				if (state[row - i][column - i] == player.getState())
-					counterCROSS12++;
-
-			if (validFieldRow(row + i) && validFieldColumn(column - i))
-				if (state[row + i][column - i] == player.getState())
-					counterCROSS21++;
-			
-			if (validFieldRow(row - i) && validFieldColumn(column + i))
-				if (state[row - i][column + i] == player.getState())
-					counterCROSS22++;
+			if (counter >= number)
+				return true;
 		}
-
-		if (counterX1 >= number || counterY1 >= number || counterCROSS11 >= number
-				|| counterCROSS21 >= number || counterX2 >= number || counterY2 >= number || counterCROSS12 >= number
-				|| counterCROSS22 >= number)
-			blocking = true;
-
-		return blocking;
+		return false;
 	}
 
 	private boolean validFieldColumn(int column) {
