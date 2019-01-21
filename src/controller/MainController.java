@@ -20,12 +20,12 @@ import view.popup.TiePanel;
 import view.popup.WinPanel;
 
 public class MainController implements GameStatusObserver {
-	
+
 	private final int AI_DELAY = 500;
 
 	private boolean isPaused;
 	private boolean isAITurn;
-	
+
 	Timer timer;
 
 	private AppFrame appFrame;
@@ -74,7 +74,10 @@ public class MainController implements GameStatusObserver {
 
 		gamePanel = new GamePanel(gameWidth, gameHeight);
 		gamePanel.setPlayerIcon(Player.CIRCLE);
-		setupGamePanelListeners(gameWidth, gameHeight);
+
+		
+			setupGamePanelListeners(gameWidth, gameHeight);
+
 		appFrame.setPanel(gamePanel);
 	}
 
@@ -136,6 +139,10 @@ public class MainController implements GameStatusObserver {
 
 		// Pause button listener
 		gamePanel.setPauseButtonListener((e) -> pauseButtonClicked());
+		
+		//returning if both players are computes, because we don't won't to click by mistake
+		if (circlePlayerAI != null && crossPlayerAI != null)
+			return;
 
 		// Field listener
 		for (int i = 0; i < height; i++)
@@ -157,10 +164,10 @@ public class MainController implements GameStatusObserver {
 
 	private void startGame() {
 
-		//making sure that timer is stopped, bacuse it can be set by previous game
-		if(timer != null)
+		// making sure that timer is stopped, bacuse it can be set by previous game
+		if (timer != null)
 			timer.stop();
-		
+
 		getGameData();
 		initializatePlayerAI();
 		setupGamePabel(gameWidth, gameHeight);
@@ -215,13 +222,12 @@ public class MainController implements GameStatusObserver {
 		if (move != null) {
 			int x = move.x;
 			int y = move.y;
-			
+
 			timer = new Timer(AI_DELAY, (e) -> {
-				if(!isPaused) {
+				if (!isPaused) {
 					gameModel.changeState(x, y);
-					isAITurn = false;	
-				}
-				else
+					isAITurn = false;
+				} else
 					doAIMoves(state, player);
 			});
 			timer.setRepeats(false);

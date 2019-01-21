@@ -1,7 +1,7 @@
 package enums;
 
 public enum PlayerType {
-	PLAYER("Player", null), RANDOM_AI("Random AI",	"ai.RandomAI"), BEST_ODD_AI("Best Odd AI", "ai.BestOddAI");
+	PLAYER("Player", null), RANDOM_AI("Random AI",	"ai.RandomAI"), BLOCKING_AI("Blocking AI", "ai.BlockingAI");
 	
 	private String name;
 	private String className;

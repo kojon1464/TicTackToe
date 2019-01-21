@@ -20,7 +20,7 @@ public class PlayerChooserPanel extends JPanel {
 	private final int ICON_WIDTH = 50;
 	private final int ICON_HEIGHT = 50;
 
-	PlayerType[] parameters = { PlayerType.PLAYER, PlayerType.RANDOM_AI, PlayerType.BEST_ODD_AI };
+	PlayerType[] parameters = { PlayerType.PLAYER, PlayerType.RANDOM_AI, PlayerType.BLOCKING_AI };
 
 	private JLabel circleLabel;
 	private JLabel crossLabel;
