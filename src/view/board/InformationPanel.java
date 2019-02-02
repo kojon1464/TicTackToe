@@ -1,18 +1,18 @@
 package view.board;
 
-import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import enums.State;
 import utility.ImageReader;
 
 public class InformationPanel extends JPanel {
 
-	private int ICON_SIZE = 60;
+	private static final long serialVersionUID = 5905789393913521702L;
+
+	private static final int ICON_SIZE = 60;
 	
 	private JLabel informationLabel;
 	

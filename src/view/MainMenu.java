@@ -13,6 +13,8 @@ import enums.PlayerType;
 
 public class MainMenu extends JPanel {
 
+	private static final long serialVersionUID = 2425314677300139546L;
+	
 	private BoardChooserPanel boardChooserPanel;
 	private PlayerChooserPanel playerChoooserPanel;
 	private JButton startGameButton;

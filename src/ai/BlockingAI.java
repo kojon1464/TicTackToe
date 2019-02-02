@@ -1,14 +1,9 @@
 package ai;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
 
 import enums.Player;
 import enums.State;
-import model.GameModel;
 
 public class BlockingAI implements PlayerAI {
 

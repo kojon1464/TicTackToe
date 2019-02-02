@@ -2,7 +2,6 @@ package view.popup;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -13,6 +12,8 @@ import javax.swing.JPanel;
 
 public abstract class PopupPanel extends JPanel {
 
+	private static final long serialVersionUID = -840416385690046004L;
+	
 	private int WIDTH = 200;
 	private int HEIGHT = 250;
 	

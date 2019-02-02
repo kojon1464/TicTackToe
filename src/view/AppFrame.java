@@ -1,26 +1,18 @@
 package view;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.OverlayLayout;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-import enums.State;
-import utility.ImageReader;
 import view.popup.PopupPanel;
 
 public class AppFrame extends JFrame {
 
+	private static final long serialVersionUID = -5788222127450714822L;
+	
 	private static final int WIDTH_START = 600;
 	private static final int HEIGHT_START = 500;
 

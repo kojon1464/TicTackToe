@@ -1,6 +1,5 @@
 package controller;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import model.GameModel;
@@ -17,7 +16,7 @@ public class Main {
 		
 		GameModel model = new GameModel();
 		AppFrame view = new AppFrame();
-		MainController controller = new MainController(view, model);
+		new MainController(view, model);
 	}
 
 }

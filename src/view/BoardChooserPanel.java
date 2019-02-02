@@ -2,7 +2,6 @@ package view;
 
 import java.awt.GridLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -10,6 +9,8 @@ import javax.swing.SpinnerNumberModel;
 
 public class BoardChooserPanel extends JPanel {
 
+	private static final long serialVersionUID = 7172987363254044812L;
+	
 	private JLabel widthLabel;
 	private JLabel heightLabel;
 	private JLabel consecutiveNumberLabel;

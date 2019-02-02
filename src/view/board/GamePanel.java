@@ -2,14 +2,11 @@ package view.board;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +17,8 @@ import enums.State;
 import utility.ImageReader;
 
 public class GamePanel extends JPanel {
+	
+	private static final long serialVersionUID = 9058286583039885525L;
 	
 	private JPanel topPanel;
 	private InformationPanel informationPanel;

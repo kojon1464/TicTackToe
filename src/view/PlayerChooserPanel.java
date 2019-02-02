@@ -1,10 +1,8 @@
 package view;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -17,15 +15,17 @@ import utility.ImageReader;
 
 public class PlayerChooserPanel extends JPanel {
 
-	private final int ICON_WIDTH = 50;
-	private final int ICON_HEIGHT = 50;
+	private static final long serialVersionUID = 4778604918181644140L;
+	
+	private static final int ICON_WIDTH = 50;
+	private static final int ICON_HEIGHT = 50;
 
 	PlayerType[] parameters = { PlayerType.PLAYER, PlayerType.RANDOM_AI, PlayerType.BLOCKING_AI };
 
 	private JLabel circleLabel;
 	private JLabel crossLabel;
-	private JComboBox circleComboBox;
-	private JComboBox crossComboBox;
+	private JComboBox<PlayerType> circleComboBox;
+	private JComboBox<PlayerType> crossComboBox;
 
 	public PlayerChooserPanel() {
 		initializateLabels();
@@ -60,21 +60,21 @@ public class PlayerChooserPanel extends JPanel {
 
 	private void initializateComboBoxes() {
 
-		circleComboBox = new JComboBox(parameters);
+		circleComboBox = new JComboBox<PlayerType>(parameters);
 		circleComboBox.setFont(circleComboBox.getFont().deriveFont(15.0f));
 		((JLabel)circleComboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		
-		crossComboBox = new JComboBox(parameters);
+		crossComboBox = new JComboBox<PlayerType>(parameters);
 		crossComboBox.setFont(crossComboBox.getFont().deriveFont(15.0f));
 		((JLabel)crossComboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 	}
 	
-	public JComboBox getCircleComboBox() {
+	public JComboBox<PlayerType> getCircleComboBox() {
 		
 		return circleComboBox;
 	}
 	
-	public JComboBox getCrossComboBox() {
+	public JComboBox<PlayerType> getCrossComboBox() {
 		
 		return crossComboBox;
 	}

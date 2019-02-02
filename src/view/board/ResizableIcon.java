@@ -5,10 +5,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 public class ResizableIcon extends ImageIcon {
 
+	private static final long serialVersionUID = 5076319868161326087L;
+	
 	private Image image;
 	private Component parent;
 	

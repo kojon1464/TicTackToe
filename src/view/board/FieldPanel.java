@@ -1,27 +1,20 @@
 package view.board;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ComponentEvent;
-import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import enums.State;
 import utility.ImageReader;
 
 public class FieldPanel extends JPanel {
 
+	private static final long serialVersionUID = 2232009117714749357L;
+	
 	private JButton fieldButton;
 
 	public FieldPanel() {

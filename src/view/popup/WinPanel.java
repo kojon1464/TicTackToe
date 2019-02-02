@@ -1,11 +1,8 @@
 package view.popup;
 
 import java.awt.Image;
-import java.awt.event.ActionListener;
 
-import javax.swing.Box;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import enums.Player;
@@ -13,6 +10,8 @@ import utility.ImageReader;
 
 public class WinPanel extends PopupPanel {
 
+	private static final long serialVersionUID = -8862006000594777616L;
+	
 	private JLabel wonLabel;
 
 	public WinPanel() {

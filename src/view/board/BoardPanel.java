@@ -2,17 +2,14 @@ package view.board;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-
-import enums.State;
-import utility.ImageReader;
 
 public class BoardPanel extends JPanel {
 
+	private static final long serialVersionUID = -6417462928436639660L;
+	
 	private int width;
 	private int height;
 

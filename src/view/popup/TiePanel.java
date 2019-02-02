@@ -1,10 +1,11 @@
 package view.popup;
 
-import javax.swing.Box;
 import javax.swing.JLabel;
 
 public class TiePanel extends PopupPanel {
 
+	private static final long serialVersionUID = 49936333543462187L;
+	
 	private JLabel tieLabel;
 
 	public TiePanel() {
