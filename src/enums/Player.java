@@ -14,4 +14,12 @@ public enum Player {
 		
 		return state;
 	}
+	
+	public Player getOpponent() {
+
+		if (this == Player.CIRCLE)
+			return Player.CROSS;
+		else
+			return Player.CIRCLE;
+	}
 }

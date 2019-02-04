@@ -20,7 +20,7 @@ public class PlayerChooserPanel extends JPanel {
 	private static final int ICON_WIDTH = 50;
 	private static final int ICON_HEIGHT = 50;
 
-	PlayerType[] parameters = { PlayerType.PLAYER, PlayerType.RANDOM_AI, PlayerType.BLOCKING_AI };
+	PlayerType[] parameters;
 
 	private JLabel circleLabel;
 	private JLabel crossLabel;
@@ -28,9 +28,19 @@ public class PlayerChooserPanel extends JPanel {
 	private JComboBox<PlayerType> crossComboBox;
 
 	public PlayerChooserPanel() {
+		
+		initializateParameters();
 		initializateLabels();
 		initializateComboBoxes();
 		initializatePanel();
+	}
+
+	private void initializateParameters() {
+
+		parameters = new PlayerType[PlayerType.values().length];
+
+		for(int i = 0; i < PlayerType.values().length; i++)
+			parameters[i] = PlayerType.values()[i];
 	}
 
 	private void initializatePanel() {
