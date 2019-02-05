@@ -12,8 +12,8 @@ public class Node {
 
 	private boolean isRoot;
 
-	public int numberOfVisits;
-	public int score;
+	private int numberOfVisits;
+	private int score;
 
 	private Node parent;
 	private List<Node> children;
@@ -63,7 +63,7 @@ public class Node {
 	public void expand() {
 		
 		if (children.size() > 0)
-			throw new IllegalStateException();
+			throw new IllegalStateException("Cannot expand node that have been expanded!");
 
 		for (int i = 0; i < state.length; i++)
 			for (int j = 0; j < state[0].length; j++)
@@ -159,7 +159,7 @@ public class Node {
 	private Node findBestChild() {
 
 		if (children.size() <= 0)
-			throw new IllegalStateException();
+			throw new IllegalStateException("Cannot find best child if there are no children!");
 
 		Node best = children.get(0);
 
@@ -183,7 +183,7 @@ public class Node {
 	public Node getMostVisitedChild() {
 		
 		if(children.size() <= 0)
-			throw new IllegalStateException();
+			throw new IllegalStateException("Cannot find most visited child if there are no children!");
 		
 		Node most = children.get(0);
 		

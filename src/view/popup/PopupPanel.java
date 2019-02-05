@@ -27,11 +27,6 @@ public abstract class PopupPanel extends JPanel {
 		initializatePanel();
 	}
 	
-	protected void addComponentAfterGlue(Component component) {
-		
-		this.add(component, 3);
-	}
-	
 	private void initializatePanel() {
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -73,6 +68,16 @@ public abstract class PopupPanel extends JPanel {
 		resumeButton.addActionListener(listener);
 	}
 	
+	public void setRetryButtonListener(ActionListener listener) {
+		
+		retryButton.addActionListener(listener);
+	}
+	
+	protected void addComponentAfterGlue(Component component) {
+		
+		this.add(component, 3);
+	}
+	
 	private void addThreeGluesToPanel() {
 
 		this.add(Box.createGlue());
@@ -83,10 +88,5 @@ public abstract class PopupPanel extends JPanel {
 	public void notifyFrameChangedSize(int width, int height) {
 		
 		this.setBounds((width - WIDTH) / 2, (height - HEIGHT) / 2, WIDTH, HEIGHT);
-	}
-	
-	public void setRetryButtonListener(ActionListener listener) {
-		
-		retryButton.addActionListener(listener);
 	}
 }

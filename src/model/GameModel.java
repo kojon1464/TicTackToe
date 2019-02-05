@@ -78,6 +78,29 @@ public class GameModel implements GameStatusProvider {
 		}
 	}
 
+	public boolean isWon() {
+
+		return isWon;
+	}
+
+	public boolean isTie() {
+
+		return isTie;
+	}
+
+	public Player getPlayer() {
+
+		return player;
+	}
+	
+	private void changePlayer() {
+
+		if (player == Player.CIRCLE)
+			player = Player.CROSS;
+		else
+			player = Player.CIRCLE;
+	}
+	
 	private boolean isTied() {
 
 		boolean tie = true;
@@ -143,29 +166,6 @@ public class GameModel implements GameStatusProvider {
 			valid = true;
 
 		return valid;
-	}
-
-	private void changePlayer() {
-
-		if (player == Player.CIRCLE)
-			player = Player.CROSS;
-		else
-			player = Player.CIRCLE;
-	}
-
-	public boolean isWon() {
-
-		return isWon;
-	}
-
-	public boolean isTie() {
-
-		return isTie;
-	}
-
-	public Player getPlayer() {
-
-		return player;
 	}
 
 	@Override

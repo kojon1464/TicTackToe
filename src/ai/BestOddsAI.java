@@ -11,31 +11,30 @@ public class BestOddsAI implements PlayerAI {
 	@Override
 	public Point makeMove(State[][] state, Player player, int consecutiveNumber) {
 
-		int counter = 0;
+		long startTime = System.currentTimeMillis();
 
 		Node root = new Node(state, player, consecutiveNumber, true);
 
-		while (counter <= 10000) {
-
+		do{
+			//selection
 			Node bestToSimulate = root.selectBestLeafNode();
 
+			//expansion
 			if(bestToSimulate.getChildren().size() == 0 && !bestToSimulate.isOver())
 				bestToSimulate.expand();
-
+			
+			//roll-out
 			if (bestToSimulate.getChildren().size() > 0)
 				bestToSimulate = bestToSimulate.getRandomChild();
 
+			//backpropagation
 			int score = bestToSimulate.simulate(root.getPlayer().getOpponent());
 			if (player != bestToSimulate.getPlayer())
 				score = 0;
 
 			bestToSimulate.backpropagate(score);
 			
-			for(int i = 0; i < root.getChildren().size(); i++)
-				System.out.println("Score: " + root.getChildren().get(i).score + "visits: " + root.getChildren().get(i).numberOfVisits + "uts: " + root.getChildren().get(i).getUCT() + "children: " + root.getChildren().get(i).getChildren().size() + "isOver: " + root.getChildren().get(i).isOver());
-			
-			counter++;
-		}
+		} while(System.currentTimeMillis() - startTime < 100);
 
 		Node bestChild = root.getMostVisitedChild();
 

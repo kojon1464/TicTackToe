@@ -26,6 +26,7 @@ public class BoardPanel extends JPanel {
 
 	// initializate this panel
 	private void initializatePanel() {
+		
 		this.setLayout(new GridLayout(height, width, 0, 0));
 	}
 
@@ -49,8 +50,10 @@ public class BoardPanel extends JPanel {
 
 	@Override
 	public final Dimension getPreferredSize() {
+		
 		Dimension dimension = super.getPreferredSize();
 		Dimension prefSize = null;
+		
 		Component parent = getParent();
 
 		if (parent == null)

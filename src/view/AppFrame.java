@@ -20,6 +20,15 @@ public class AppFrame extends JFrame {
 
 		init();
 	}
+	
+	private void init() {
+
+		this.setTitle("TicTackToe");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setMinimumSize(new Dimension(WIDTH_START, HEIGHT_START));
+		this.setSize(WIDTH_START, HEIGHT_START);
+		this.setVisible(true);
+	}
 
 	public void setPanel(JPanel panel) {
 
@@ -41,15 +50,6 @@ public class AppFrame extends JFrame {
 		this.getLayeredPane().remove(panel);
 		this.revalidate();
 		this.repaint();
-	}
-
-	private void init() {
-
-		this.setTitle("TicTackToe");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setMinimumSize(new Dimension(WIDTH_START, HEIGHT_START));
-		this.setSize(WIDTH_START, HEIGHT_START);
-		this.setVisible(true);
 	}
 
 	@Override
